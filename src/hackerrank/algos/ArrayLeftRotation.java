@@ -12,13 +12,11 @@ public class ArrayLeftRotation {
         int k = in.nextInt();
         int a[] = new int[n];
 
-        for (int i = 0; i < n; i++) {
-            a[i] = in.nextInt();
-        }
+        IntStream.range(0, n).forEach(i -> {
+            a[(i - k + n) % n] = in.nextInt();
+        });
         in.close();
 
-        int[] newA = new int[n];
-        IntStream.range(0, n).forEach(i -> newA[(i - k + n) % n] = a[i]);
-        Arrays.stream(newA).forEach(i -> System.out.print(i + " "));
+        Arrays.stream(a).forEach(i -> System.out.print(i + " "));
     }
 }
