@@ -1,24 +1,16 @@
 package hackerrank.algos;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class MakingAnagrams {
+    private static final int ALPHABETS = 26;
+
     public static int numberNeeded(String first, String second) {
-        Map<Integer,Integer> map = new HashMap<>();
-        first.chars().forEach(i -> {
-            map.merge(i, 1, (x, y) -> x+y);
-        });
-        
-        second.chars().forEach(i -> {
-            map.merge(i, -1, (x, y) -> (x+y == 0 ? null : x+y));
-        });
-        
-        int result = map.values().stream().mapToInt(i -> {
-            return Math.abs(i.intValue());
-        }).sum();
-        return result;
+        int[] count = new int[ALPHABETS];
+        first.chars().forEach(i -> count[i%ALPHABETS] += 1);
+        second.chars().forEach(i -> count[i%ALPHABETS] -= 1);
+        return Arrays.stream(count).map(Math::abs).sum();
     }
   
     public static void main(String[] args) {
