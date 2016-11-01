@@ -5,11 +5,11 @@ import java.util.Scanner;
 
 public class MakingAnagrams {
     private static final int ALPHABETS = 26;
-
+    
     public static int numberNeeded(String first, String second) {
         int[] count = new int[ALPHABETS];
-        first.chars().forEach(i -> count[i%ALPHABETS] += 1);
-        second.chars().forEach(i -> count[i%ALPHABETS] -= 1);
+        first.chars().forEach(i -> count[i%ALPHABETS]++);
+        second.chars().forEach(i -> count[i%ALPHABETS]--);
         return Arrays.stream(count).map(Math::abs).sum();
     }
   
