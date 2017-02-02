@@ -4,7 +4,7 @@ public class BestSelfie {
 
     private static int[][] matrix;
     public static void main(String[] args) {
-        String[] result = bestSelfie(new String[] {"A", "B", "C", "D", "E", "C", "B", "A"});
+        String[] result = bestSelfie(new String[] {"A", "B", "C", "D", "E", "C", "B", "A", "F", "D", "C"});
         for(String s : result)
             System.out.print(s + " ");
     }
